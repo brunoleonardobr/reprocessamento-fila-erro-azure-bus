@@ -10,9 +10,7 @@ export class AzureBusServer extends Server implements CustomTransportStrategy {
   private serviceBusClient: ServiceBusClient;
 
   listen(callback: (...optionalParams: unknown[]) => any) {
-    this.serviceBusClient = new ServiceBusClient(
-      'Endpoint=sb://brunoleonardo.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=v9bsXtjsnZQ6qCKiy8UiEPQgsTIzo2w9LIsujh4SeXI=',
-    );
+    this.serviceBusClient = new ServiceBusClient('<credenciais azure>');
     this.messageHandlers.forEach((handle, topic) => {
       const receiver = this.serviceBusClient.createReceiver(
         topic,
